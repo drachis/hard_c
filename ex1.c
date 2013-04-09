@@ -10,6 +10,7 @@ int main(int argc,char *argv[])
 
 void ex3()
 {
+  //exersice three, insterting values into strings
   int age = 10;
   int height = 72;
   
@@ -20,6 +21,7 @@ void ex3()
 
 void ex4()
 {
+  //exercise 4 working with vangrid
   int age = 26;
   int height=76; 
   
