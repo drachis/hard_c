@@ -5,7 +5,9 @@ int main(int argc,char *argv[])
   puts("Hello world.\n");
   ex3();
   ex4();
-  ex5();
+  ex6();
+  ex7();
+  ex8();
   return 0;
 }
 
@@ -31,7 +33,7 @@ void ex4()
   
 }
 
-void ex5()
+void ex6()
 {
   int distance = 100;
   float power = 2.345f;
@@ -48,4 +50,42 @@ void ex5()
   printf("I have a first name %s.\n",first_name);
   printf("I have a last name %s.\n",last_name);
   printf("My whole name is %s %c%c %s.\n",first_name,initial2,initial,last_name);
+}
+
+void ex7()
+{
+  int bugs = 100;
+  double bug_rate = 1.2;
+  
+  printf("you have %d bugs at the imaginary rate of %f.\n",bugs,bug_rate);
+  
+  long universe_of_defects = 1L*1024L*1024L*1024L;l
+  printf("The entire universe has %ld bugs.\n",universe_of_defects);
+  
+  double expected_bugs = bugs * bug_rate;
+  printf("You are expected to have %f bugs.\n",expected_bugs);
+  
+  double part_of_universe = expected_bugs / universe_of_defects;
+  printf("That is only a %e portion of the universe.\n",part_of_universe);
+  
+  //illogical demo code
+  char null_byte = '\0';
+  int care_percentage = bugs * null_byte;
+  printf("Which meand you should care %d%%,%s.\n",care_percentage,null_byte);
+}
+
+void ex8()
+{
+	int areas[] = {10,12,13,14,20};
+	char name[] = "Zed";
+	char full_name[] = {
+		'Z','e','d',
+		' ','A','.',' ',
+		'S','h','a','w','\0'
+	};
+	
+	printf("The size of an int: %ld\n",sizeof(int));
+	printf("THe size of areas (int[]): %ld\n", sizeof(areas));
+	
+	printf("The number of ints in areas: %ld\n",areas[0]/sizeof(int));
 }
