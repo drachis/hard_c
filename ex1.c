@@ -10,8 +10,9 @@ int main(int argc,char *argv[])
 	ex7();
 	ex8();
 	ex9();
-	*/
 	ex10(argc,argv);
+	*/
+	ex11(argc,argv);
 	return 0;
 }
 
@@ -178,5 +179,13 @@ void ex10(int argc, char *argv[]){
 		printf("state %d: %s\n", i, states[i]);
 	}
 
+}
+void ex11(int argc, char *argv[]){
+	int i = 0;
+	while(i < argc) {
+		printf("arg %d: %s\n",i,argv[i]);
+		i++;
+	}
+	
 }
 
