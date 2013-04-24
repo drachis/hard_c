@@ -11,8 +11,9 @@ int main(int argc,char *argv[])
 	ex8();
 	ex9();
 	ex10(argc,argv);
-	*/
 	ex11(argc,argv);
+	*/
+	ex12(argc,argv);
 	return 0;
 }
 
@@ -187,5 +188,59 @@ void ex11(int argc, char *argv[]){
 		i++;
 	}
 	
+	char *states[] = {
+		"California","Oregon",
+		"Washington","Texas"
+	};
+	
+	int num_states = 4;
+	i = 0; //watch for this (?)
+	while(i<num_states) {
+	printf("state %d: %s\n",i,states[i]);
+		i++;
+	}
+	/*
+	while(TEST){
+		CODE;
+	}
+	*/
 }
+
+void ex12(int argc, char *argv[]){
+	
+	if(argc==1) {
+		printf("Only one argument, minimauler.\n");
+	} else if (1 < argc && argc < 4 ){
+		printf("Seems legit, arguments inc:\n");
+		
+		int i=0; //tring out JIT decleration
+		for(i=0;i < argc; i++) {
+			printf("%i:%s ",i, argv[i]);
+		}
+		printf("\n");
+	} else {
+		printf("Totally overloaded here. Beep Boop!\n");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
