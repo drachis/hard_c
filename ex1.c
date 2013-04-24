@@ -11,14 +11,14 @@ int main(int argc,char *argv[])
 	ex8();
 	ex9();
 	*/
-	ex10();
+	ex10(argc,argv);
 	return 0;
 }
 
 void ex3()
 {
 	//exersice three, insterting values into strings
-	int age = 10;
+	int age = 10; 
 	int height = 72;
 
 	printf("I am %d years old.\n", age);
@@ -149,8 +149,34 @@ void ex9()
 		  another[0],another[1],
 		  another[2],another[3]
 		  );
-	
+	/*
+	//initialization from incompatible pointer type
 	int *letter = name;
-	
-	printf("letter to number: %i %i %i %i\n",name[0],name[1],letter[2],letter[3]);
+	printf("letter to number: %i %i %i %i\n",
+		   name[0], name[1],
+		   letter[2], letter[3]);
+	*/
 }
+void ex10(int argc, char *argv[]){
+	int i = 0;
+	
+	//go through each string in argv
+	//skips argv[0]
+	
+	for( i = 1; i < argc; i++){
+		printf("arg %d: %s\n", i, argv[i]);
+	}
+	
+	// string array time
+	char *states[] = {
+		"California", "Oregon",
+		"Washington","Texas"
+	};
+	int num_states = 4;
+	
+	for(i = 0; i < num_states; i++) {
+		printf("state %d: %s\n", i, states[i]);
+	}
+
+}
+
