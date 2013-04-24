@@ -89,10 +89,10 @@ void ex8()
 		'S','h','a','w','\0'
 	};
 	areas[1] = name[2];
-	printf("The size of an int: %ld\n",sizeof(int));
-	printf("THe size of areas (int[]): %ld\n", sizeof(areas));
+	printf("The size of an int: %d\n",sizeof(int));
+	printf("THe size of areas (int[]): %d\n", sizeof(areas));
 
-	printf("The number of ints in areas: %ld\n",areas[0]/sizeof(int));
+	printf("The number of ints in areas: %d\n",areas[0]/sizeof(int));
 	printf("%i\n",areas[1]);
 }
 
