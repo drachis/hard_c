@@ -13,8 +13,9 @@ int main(int argc,char *argv[])
 	ex10(argc,argv);
 	ex11(argc,argv);
 	ex12(argc,argv);
-	*/
 	ex13(argc,argv);
+	*/
+	ex14(argc,argv);
 	return 0;
 }
 
@@ -267,6 +268,43 @@ void ex13 (int argc,char *argv[]){
 	}
 }
 
+
+void ex14(int argc, char *argv[])
+{
+	//unable to get foward decleration in the function working at this time.
+	//int can_print_it(char ch);
+	void print_letters(char arg[]);
+	
+	void print_arguments(int argc, char *argv[])
+	{
+		int i = 0;
+		
+		for(i=0; i < argc; i++)
+		{
+			print_letters(argv[i]);	
+		}
+	}
+	
+	void print_letters(char arg[])
+	{
+		int i = 0;
+		
+		for(i = 0; arg[i] == '\0'; i++)
+			{
+				char ch= arg[i];
+				
+				if (can_print_it(ch))
+				{
+					printf("'%c' == %d",ch,ch);
+				}
+			}
+	}
+	int can_print_it(char ch)
+	{
+		return isalpha(ch)||isblank(ch);
+	}
+	print_arguments(argc,argv);
+}
 
 
 
