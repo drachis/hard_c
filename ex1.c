@@ -274,7 +274,6 @@ these functions be broken outI break this out
 
 void ex14(int argc, char *argv[])
 {
-	printf("ex14\n./bin");
 	print_arguments(argc,argv);
 }
 
@@ -284,7 +283,6 @@ void ex14(int argc, char *argv[])
 
 void print_arguments(int argc, char *argv[])
 {
-	printf("print Args #%i\n",argc);
 	int i = 0;
 	for(i=0; i < argc; i++)
 	{
@@ -293,7 +291,6 @@ void print_arguments(int argc, char *argv[])
 }
 void print_letters(char arg[])
 {
-	printf("print letters\n");
 	int i = 0;
 	
 	for(i = 0; arg[i] != '\0'; i++)
@@ -308,7 +305,6 @@ void print_letters(char arg[])
 }
 int can_print_it(char ch)
 {
-	printf("can print\n");
 	return isalpha(ch)||isblank(ch);
 }
 
