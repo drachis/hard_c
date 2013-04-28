@@ -1,11 +1,10 @@
 all:
+	clear
 	rm -f ./bin/ex1
 	CFLAGS=-Wall
 	cc ex1.c -g -o ./bin/ex1
-	clear
 	echo "\nCompile Complete,\n Executing:"
 	./bin/ex1
-	
 	echo "\nValgrind Go!:"
 	valgrind ./bin/ex1
 	
