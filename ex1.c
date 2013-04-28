@@ -283,10 +283,16 @@ void ex14(int argc, char *argv[])
 
 void print_arguments(int argc, char *argv[])
 {
-	int i = 0;
-	for(i=0; i < argc; i++)
+	int i = 1;
+	if(argc == 1)
 	{
-		print_letters(argv[i]);	
+		printf("no args passed in.\n");
+	}else
+	{
+		for(i=1; i < argc; i++)
+		{
+			print_letters(argv[i]);	
+		}
 	}
 }
 void print_letters(char arg[])
@@ -299,7 +305,7 @@ void print_letters(char arg[])
 		
 		if (can_print_it(ch))
 		{
-			printf("'%c' == %d",ch,ch);
+			printf("'%c' == %d\n",ch,ch);
 		}
 	}
 }
