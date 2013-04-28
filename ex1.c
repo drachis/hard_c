@@ -7,7 +7,7 @@ int main(int argc,char *argv[])
 	ex3();
 	ex4();
 	ex6();
-	ex7();
+	ex7()
 	ex8();
 	ex9();
 	ex10(argc,argv);
@@ -267,43 +267,49 @@ void ex13 (int argc,char *argv[]){
 		}
 	}
 }
-
+/*
+forward decleratiosn in ex 14 require 
+these functions be broken outI break this out
+*/
 
 void ex14(int argc, char *argv[])
 {
-	//unable to get foward decleration in the function working at this time.
-	//int can_print_it(char ch);
-	void print_letters(char arg[]);
-	
-	void print_arguments(int argc, char *argv[])
+	printf("ex14\n./bin");
+	print_arguments(argc,argv);
+}
+
+//unable to get foward decleration in the function working at this time.
+//int can_print_it(char ch);
+
+
+void print_arguments(int argc, char *argv[])
+{
+	printf("print Args #%i\n",argc);
+	int i = 0;
+	for(i=0; i < argc; i++)
 	{
-		int i = 0;
+		print_letters(argv[i]);	
+	}
+}
+void print_letters(char arg[])
+{
+	printf("print letters\n");
+	int i = 0;
+	
+	for(i = 0; arg[i] != '\0'; i++)
+	{
+		char ch= arg[i];
 		
-		for(i=0; i < argc; i++)
+		if (can_print_it(ch))
 		{
-			print_letters(argv[i]);	
+			printf("'%c' == %d",ch,ch);
 		}
 	}
-	
-	void print_letters(char arg[])
-	{
-		int i = 0;
-		
-		for(i = 0; arg[i] == '\0'; i++)
-			{
-				char ch= arg[i];
-				
-				if (can_print_it(ch))
-				{
-					printf("'%c' == %d",ch,ch);
-				}
-			}
-	}
-	int can_print_it(char ch)
-	{
-		return isalpha(ch)||isblank(ch);
-	}
-	print_arguments(argc,argv);
+}
+int can_print_it(char ch)
+{
+	printf("can print\n");
+	return isalpha(ch)||isblank(ch);
 }
 
 
