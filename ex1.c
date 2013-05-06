@@ -1,55 +1,66 @@
 #include "ex1.h"
 
+struct Person {
+	char *name;
+	int age;
+	int height;
+	int weight;
+};
+struct Person *Person_create(char *name, int age, int height, int weight)
+{
+	struct Person *who = malloc(sizeof(struct Person));
+	assert(who != NULL);
+
+	who->name = strdup(name);
+	who->age = age;
+	who->height = height;
+	who->weight = weight;
+
+	return who;
+}
+
+void Person_destroy(struct Person *who)
+{
+	assert(who != NULL);
+
+	free(who->name);
+	free(who);
+}
+
+void Person_print(struct Person *who)
+{
+	printf("Name: %s\n",who->name);
+	printf("\tAge: %d\n",who->age);
+	printf("\tHeight: %d\n",who->height);
+	printf("\tWeight: %d\n", who->weight);
+}
+
 int main(int argc,char *argv[])
 {
-	// arrays that we care about
+	//make two people structures
+	struct Person *joe = Person_create(
+		"Joe Alex", 32, 64, 140);
 
-	int ages[] = {23,43,12,89,2};
-	char *names[] = {
-		"Alan", "Frank",
-		"Mary", "John", "Lisa"
-	};
-	// safely get the size of ages
-	int count = sizeof(ages) / sizeof(int);
-	int i = 0;
+	struct Person *frank = Person_create(
+		"Frank Blank", 20, 72, 180);
 
-	// first way of indexing
-	for(i = 0; i < count; i++ ){
-		printf("%s is %d years old.\n",
-			  names[i], ages[i]);
-	}
+	// print their mem location
+	printf("Joe is at memory location %p:\n",joe);
+	printf("Frank is at memory location %p:\n", frank);
+	Person_print(frank);
 
-	printf("--- :2\n");
+	// make every age 30 years
+	joe->age += 30;
+	joe->height -= 3;
+	joe->weight == 45;
+	Person_print(joe);
 
-	// setup pointers to the start of the arrays
-	int *cur_age = ages;
-	char **cur_name = names;
+	frank->age += 30;
+	frank->weight += 20;
+	Person_print(frank);
 
-	//second way using pointers
-	for(i = 0; i <count;i++){
-		printf("%s is %d years old\n",
-			  *(cur_name+i),*(cur_age+i));
-	}
+	Person_destroy(joe);
+	Person_destroy(frank);
 
-	printf("---:3\n");
-
-	//third way, pointers are just arrays
-
-	for(i = 0; i <count; i++){
-		printf("%s is %d years old.\n",
-			  cur_name[i], cur_age[i]);
-	}
-
-	printf("---:4\n");
-
-	//fourth way with pointers in a more complex way.
-
-	for(cur_name = names, cur_age = ages;
-	   (cur_age - ages) < count;
-	   cur_name++, cur_age++)
-	{
-		printf("%s lived %d years so far. \n",
-			*cur_name, *cur_age);
-	}
 	return 0;
 }
