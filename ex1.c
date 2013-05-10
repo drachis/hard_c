@@ -23,7 +23,7 @@ void Person_destroy(struct Person *who)
 {
 	assert(who != NULL);
 
-	free(who->name);
+	6free(who->name);
 	free(who);
 }
 
@@ -57,6 +57,8 @@ int main(int argc,char *argv[])
 
 	frank->age += 30;
 	frank->weight += 20;
+  //frank->height = NULL;
+  // the above throws a compile time error for NULL assignment
 	Person_print(frank);
 
 	Person_destroy(joe);
