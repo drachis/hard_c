@@ -22,3 +22,13 @@ phil:
 	echo "\nValgrind Go!:\n"
 	valgrind ./bin/p1
 	clear
+ex17:
+	clear
+	rm -f ./bin/ex1
+	CFLAGS=-Wall
+	cc ex1.c -g -o ./bin/ex1
+	echo "\nCompile Complete,\n Executing:"
+	./bin/ex1 "./sdata.base" c
+	echo "\nValgrind Go!:"
+	valgrind ./bin/ex1 "./vdata.base" c
+	
