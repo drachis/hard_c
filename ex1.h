@@ -23,7 +23,7 @@ void Database_load(
 struct Connection *Database_open(
 	const char *filename,
 	char mode
-	)
+	);
 void Database_close(
 	struct Connection *conn
 	);
