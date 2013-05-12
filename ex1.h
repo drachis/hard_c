@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_DAT 512
+#define MAX_DATA 512
 #define MAX_ROWS 100
 
 struct Address;
@@ -25,6 +25,9 @@ struct Connection *Database_open(
 	char mode
 	)
 void Database_close(
+	struct Connection *conn
+	);
+void Database_write(
 	struct Connection *conn
 	);
 void Database_create(
