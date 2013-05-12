@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+//a little toolkit to help with debugging
+#include "tools.h"
+
 #define MAX_DATA 512
 #define MAX_ROWS 100
 

@@ -11,7 +11,7 @@ all:
 
 clean:
 	rm -f ./bin/ex1
-	
+	rm -f ./bin/db.dat
 phil:
 	
 	rm -f ./bin/p1
@@ -24,7 +24,7 @@ phil:
 
 ex17:
 	clear
-	rm -f ./bin/ex17
+	rm -f ./bin/ex1
 	cc -Wall -g    ex1.c   -o ./bin/ex17
 	./bin/ex17 ./bin/db.dat c
 	./bin/ex17 ./bin/db.dat s 1 zed zed@zedshaw.com

@@ -146,7 +146,7 @@ void Database_list(
 {
 	int i = 0;
 	struct Database *db = conn->db;
-	for(i = 0; i , MAX_ROWS; i++) {
+	for(i = 0; i < MAX_ROWS; i++) {
 		struct Address *cur = &db->rows[i];
 		
 		if(cur->set){
@@ -165,6 +165,7 @@ int main(
 	char action = argv[2][0];
 	struct Connection *conn = Database_open(filename, action);
 	int id = 0;
+	int num_args = sizeof(argc);
 	
 	if(argc > 3) id = atoi(argv[3]);
 	if(id >= MAX_ROWS) die("There are not that many records.");
@@ -176,13 +177,20 @@ int main(
 			break;
 		
 		case 'g':
-			if(argc != 4) die("Need an id to get.");
+			if(num_args != 4) die("Need an id to get.");
 			Database_get(conn, id);
 			break;
 		
 		case 's':
-			if(argc != 4) die ("Need an id to delete");
+			printf("%lu	\n",sizeof(argc));
+			if(num_args !=4) die("Need id, name email to set");
+
+			Database_set(conn,id,argv[4],argv[5]);
+			Database_write(conn);
+			break;
 			
+		case 'd':
+			if(num_args != 4) die ("Need an id to delete");
 			Database_delete(conn,id);
 			Database_write(conn);
 			break;
