@@ -37,23 +37,27 @@ int *bubble_sort(int *numbers, int count, compare_cb cmp)
 	for(i = 0; i < count; i++) {
 		for(j = 0;j < count - 1; j++) {
 			if(cmp(target[j],target[j+1]) > 0){
-				printf("%i pre: [%i] %i , [%i] %i\n",
-					i,
-					j+1,
-					target[j+1],
-					j,
-					target[j]
-					);
+				/* index pre sort, 
+				 *printf("%i pre: [%i] %i , [%i] %i\n",
+				 *	i,
+				 *	j+1,
+				 *	target[j+1],
+				 *	j,
+				 *	target[j]
+				 *	);
+				 */
 				temp = target[j+1];
 				target[j+1] = target[j];
 				target[j] = temp;
-				printf("%i pst: [%i] %i , [%i] %i\n",
-					i,
-					j+1,
-					target[j+1],
-					j,
-					target[j]
-					);
+				/*index post sort
+				 *printf("%i pst: [%i] %i , [%i] %i\n",
+				 *	i,
+				 *	j+1,
+				 *	target[j+1],
+				 *	j,
+				 *	target[j]
+				 *	);
+				 */
 			}
 		}
 	}
@@ -80,6 +84,14 @@ int strange_order(int a, int b)
 	}
 }
 
+int other_order(int b, int c){
+	if ((c+b)%(b-c) > b){
+		return c;
+	} else {
+		return b;
+	}	
+}
+
 void test_sorting(int *numbers, int count, compare_cb cmp)
 {
 	int i = 0;
@@ -89,6 +101,13 @@ void test_sorting(int *numbers, int count, compare_cb cmp)
 	
 	for(i = 0; i < count; i ++) {
 		printf("%d ", sorted[i]);
+	}
+	
+	printf("\n");
+	
+	unsigned char *data = (unsigned char *)cmp;
+	for(i = 0; i < 25; i++){
+		printf("%02x:", data[i]);
 	}
 	printf("\n");
 	
@@ -113,6 +132,7 @@ int main(int argc, char *argv[])
 	test_sorting(numbers, count, sorted_order);
 	test_sorting(numbers, count, reverse_order);
 	test_sorting(numbers, count, strange_order);
+	test_sorting(numbers, count, other_order);
 	
 	free(numbers);
 	

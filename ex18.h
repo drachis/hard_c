@@ -13,7 +13,7 @@ int *bubble_sort(int *numbers, int count, compare_cb cmp);
 int sorted_order(int a, int b);
 int reverse_order(int a, int b);
 int strange_order(int a, int b);
-
+int other_order(int b, int c);
 void test_sorting(int *numbers, int count, compare_cb cmp);
 
 
