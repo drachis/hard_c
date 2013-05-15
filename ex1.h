@@ -15,7 +15,8 @@ struct Database;
 struct Connection;
 
 void die(
-	const char *message
+	const char *message,
+	struct Connection *conn
 	);
 void Adress_print(
 	struct Address *addr
