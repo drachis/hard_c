@@ -1,4 +1,4 @@
-#include "ex1.h"
+vb#include "ex1.h"
 
 struct Address{
 	int id;
@@ -35,7 +35,7 @@ void Database_load(
 	)
 {
 	int rc = fread(conn->db, sizeof(struct Database),1,conn->file);
-	if(rc != 1) die("Failed to load the database"); 
+	if(rc != 1) die("Failed to load the database");
 }
 struct Connection *Database_open(
 	const char *filename,
@@ -44,7 +44,7 @@ struct Connection *Database_open(
 {
 	struct Connection *conn = malloc(sizeof(struct Connection ));
 	if(!conn) die("memory error");
-	
+
 	conn->db =  malloc(sizeof(struct Database));
 	if(!conn->db) die("Memory error");
 
@@ -52,15 +52,15 @@ struct Connection *Database_open(
 		conn->file = fopen(filename, "w");
 	} else {
 		conn->file = fopen(filename, "r+");
-		
+
 		if(conn->file)
 		{
 			Database_load(conn);
-		}		
+		}
 
 	}
 	if(!conn->file) die("Failed to open file");
-	
+
 	return conn;
 }
 void Database_close(
@@ -78,10 +78,10 @@ void Database_write(
 	)
 {
 	rewind(conn->file);
-	
+
 	int rc = fwrite(conn->db, sizeof(struct Database), 1, conn->file);
 	if(rc != 1) die("Failed to write to database.");
-	
+
 	rc = fflush(conn->file);
 	if(rc == -1) die("Cannot flush database.");
 }
@@ -90,7 +90,7 @@ void Database_create(
 	)
 {
 	int i = 0;
-	
+
 	for(i = 0; i < MAX_ROWS; i++){
 		//make a prototype to initialize it
 		struct Address addr = {.id = 1, .set = 0 };
@@ -107,13 +107,13 @@ void Database_set(
 {
 	struct Address *addr = &conn->db->rows[id];
 	if(addr->set) die("Already set, delete it first");
-	
+
 	addr->set = 1;
 	// WARNING: bug, read "how to break it" and fix this
 	char *res = strncpy(addr->name, name, MAX_DATA);
 	//demonstrates the strncopy bug //:x
 	if(!res) die("Name copy failed");
-	
+
 	res = strncpy(addr->email,email,MAX_DATA);
 	if(!res) die("Name copy failed");
 }
@@ -123,8 +123,8 @@ void Database_get(
 	)
 {
 	struct Address *addr = &conn->db->rows[id];
-	
-	if(addr->set) 
+
+	if(addr->set)
 	{
 		Address_print(addr);
 	} else {
@@ -148,7 +148,7 @@ void Database_list(
 	struct Database *db = conn->db;
 	for(i = 0; i < MAX_ROWS; i++) {
 		struct Address *cur = &db->rows[i];
-		
+
 		if(cur->set){
 			Address_print(cur);
 		}
@@ -159,42 +159,43 @@ int main(
 	int argc, char *argv[]
 	)
 {
+	debug_arry(argv);
 	if(argc<3) die("USEAGE: ex17 <dbfile> [action params]");
-	
+
 	char *filename = argv[1];
 	char action = argv[2][0];
 	struct Connection *conn = Database_open(filename, action);
 	int id = 0;
 	int num_args = sizeof(argc);
-	
+
 	if(argc > 3) id = atoi(argv[3]);
 	if(id >= MAX_ROWS) die("There are not that many records.");
-	
+
 	switch(action) {
 		case 'c':
 			Database_create(conn);
 			Database_write(conn);
 			break;
-		
+
 		case 'g':
 			if(num_args != 4) die("Need an id to get.");
 			Database_get(conn, id);
 			break;
-		
+
 		case 's':
-			printf("%lu	\n",sizeof(argc));
+			printf("%u\n",sizeof(argc));
 			if(num_args !=4) die("Need id, name email to set");
 
 			Database_set(conn,id,argv[4],argv[5]);
 			Database_write(conn);
 			break;
-			
+
 		case 'd':
 			if(num_args != 4) die ("Need an id to delete");
 			Database_delete(conn,id);
 			Database_write(conn);
 			break;
-			
+
 		case 'l':
 			Database_list(conn);
 			break;

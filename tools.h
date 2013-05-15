@@ -1,4 +1,4 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_array();
+void debug_array( char *array[]);
