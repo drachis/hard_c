@@ -18,6 +18,13 @@ void die (const char *message)
  */
 int *bubble_sort(int *numbers, int count, compare_cb cmp)
 {
+	//idea for an optimazation, reduce the sort range by 1 every pass
+	/*
+	 * for a list 1 6 3 2 on the first pass in the sub loop 
+	 * 6 would migrate to its final position and that index could be removed
+	 * this might help optimize the sort slightly( 
+	 * other sorts may be much be much better in O(n) terms.
+	 */
 	int temp = 0;
 	int i = 0;
 	int j = 0;
