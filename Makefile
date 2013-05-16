@@ -9,7 +9,7 @@ all:
 	valgrind ./bin/ex18
 
 clean:
-	rm -f ./bin/ex18
+	rm -f ./bin/*
 
 ex18:
 	clear
