@@ -7,7 +7,7 @@
 
 int Monster_attack(void *self, int damage)
 {
-	Monster *monster -= self;
+	Monster *monster = self;
 	printf("You attack %s!\n",monster->_(description));
 	
 	monster->hit_points -= damage;
@@ -66,7 +66,7 @@ void *Room_move(void *self, Direction direction)
  int Room_attack(void *self, int damage)
  {
 	Room *room = self;
-	Mosnter *monster = room->bad_guy;
+	Monster *monster = room->bad_guy;
 	
 	if(monster) {
 		monster->_(attack)(monster, damage);
@@ -153,7 +153,7 @@ int process_input(Map *game)
 	
 	int damage = rand() % 4;
 	
-	switch(ch {
+	switch(ch) {
 		case -1:
 			printf("You awaken, your body hangs in the air\n\
 You continue your dive into the pool");
@@ -169,11 +169,11 @@ You continue your dive into the pool");
 			break;
 		
 		case 'e':
-			game->_(move)(game, EAST)
+			game->_(move)(game, EAST);
 			break;
 		
 		case 'w':
-			game->_(move)(game, WEST)
+			game->_(move)(game, WEST);
 			break;
 		
 		case 'a':
@@ -190,9 +190,9 @@ You continue your dive into the pool");
 			
 		default:
 			printf("I'm sorry you can't do %d Jim\n",ch);
-		}
+	}
 		
-	return 1
+	return 1;
 }
 
 int main(int argc, char *argv[])

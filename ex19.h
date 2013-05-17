@@ -3,20 +3,20 @@
 
 #include "object.h"
 
-struct Moster {
+struct Monster {
 	Object proto;
 	int hit_points;
 };
 
-typedef struct Monster monster;
+typedef struct Monster Monster;
 
-int Moster_attack(void *self,int damage);
+int Monster_attack(void *self,int damage);
 int Monster_init(void *self);
 
 struct Room {
 	Object proto;
 	
-	Moster *bad_guy;
+	Monster *bad_guy;
 	
 	struct Room *north;
 	struct Room *south;
