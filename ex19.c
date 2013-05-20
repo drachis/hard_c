@@ -156,7 +156,7 @@ int process_input(Map *game)
 	switch(ch) {
 		case -1:
 			printf("You awaken, your body hangs in the air\n\
-Reality colesess around you and you see the console onece more,\n\
+Reality coalesces around you and you see the console once more,\n\
 Hello User.\n");
 			return 0;
 			break;
