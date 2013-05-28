@@ -1,5 +1,5 @@
 #include "dbg.h"
-#include <stdub.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 void test_debug()
@@ -14,7 +14,13 @@ void test_debug()
 void test_log_err()
 {
 	log_err("I belive everything is broken.");
-	log_err("There are %d problems in %s.", "/ect/paswd");
+	log_err("There are %d problems in %s.", 0, "space");
+}
+
+void test_log_warn()
+{
+	log_warn("You can safely ignore this.");
+	log_warn("Maybe consider looking at %s.", "/ect/passwd");
 }
 
 void test_log_info()

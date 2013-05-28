@@ -1,8 +1,11 @@
+## update before make will work with ex20
+
 CFLAGS=-Wall
 
-all: ex19
+all: ex20
 
-ex19: object.o
+ex20: dbg.h
 
 clean:
 	rm -f ex19
+	rm -f object.o
