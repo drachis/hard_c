@@ -10,7 +10,7 @@ void scope_demo(int count)
 	if(count > 10){
 		int count = 100; // BAD! BUGS!
 		
-		log_info("count in this scope is %s", count);
+		log_info("count in this scope is %d", count);
 	}
 	
 	log_info("count is at exit: %d", count);
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 	scope_demo(count);
 	scope_demo(count * 20);
 	
-	log_info("count after calling scope_demo: %s", count);
+	log_info("count after calling scope_demo: %d", count);
 	
 	return 0;
 }
