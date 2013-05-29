@@ -28,5 +28,5 @@ double update_ratio(double new_ratio)
 
 void print_size()
 {
-	printf("I think size is: %d", THE_SIZE);
+	log_info("I think size is: %d", THE_SIZE);
 }

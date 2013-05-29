@@ -2,7 +2,8 @@
 
 CFLAGS=-Wall
 
-all: ex20
+ex22.o: dbg.o
+	cc -Wall -g -DNDBUG -c -o dbg.o dbg.h
 
 ex22:
 	clear
@@ -11,5 +12,5 @@ ex22:
 	./ex22_main
 
 clean:
-	rm -f ex19
-	rm -f object.o
+	rm -f ex22.o
+	rm -f ex22_main
